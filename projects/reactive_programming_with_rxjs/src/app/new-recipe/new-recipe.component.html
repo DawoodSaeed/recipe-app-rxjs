@@ -42,16 +42,37 @@
     <div class="form-group tags">
       <label>Tags</label>
       <div class="tag-options">
-        <div *ngFor="let tag of tags" class="tag-option">
-          <input
-            type="radio"
-            [value]="tag.name"
-            formControlName="tags"
-            id="{{ tag.key }}"
-            hidden
-          />
-          <label for="{{ tag.key }}"></label>
-          <label for="{{ tag.key }}">{{ tag.name }}</label>
+        <!-- <div *ngFor="let tag of tags" class="tag-option">
+            <input
+              type="radio"
+              [value]="tag.name"
+              formControlName="tags"
+              id="{{ tag.key }}"
+              hidden
+            />
+            <label for="{{ tag.key }}"></label>
+            <label for="{{ tag.key }}">{{ tag.name }}</label>
+          </div> -->
+
+        <input
+          type="text"
+          placeholder="Enter Tag Name"
+          formControlName="tags"
+          class="tag-options--input"
+        />
+
+        <div
+          *ngIf="tagValues$ | async as tagValue"
+          style="width: 100%"
+          class="tag-options--dropdown"
+          [class.d-none]="!dropdown"
+        >
+          <p
+            *ngFor="let tag of tagValue; let i = index"
+            (click)="setTagFormValue(tag)"
+          >
+            {{ tag.name?.toLowerCase() }}
+          </p>
         </div>
       </div>
     </div>

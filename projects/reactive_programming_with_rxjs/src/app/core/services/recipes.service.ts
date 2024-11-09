@@ -1,8 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, catchError, concatMap, Observable, of } from 'rxjs';
+import {
+  BehaviorSubject,
+  catchError,
+  concatMap,
+  Observable,
+  of,
+  switchMap,
+} from 'rxjs';
 import { Recipe } from '../model/recipe.model';
 import { environment } from '../../../environments/environment';
+import { Tag } from '../model/tags';
 const BASE_PATH = environment.basePath;
 
 @Injectable({
@@ -67,4 +75,15 @@ export class RecipesService {
   saveRecipe(formValue: Recipe): Observable<Recipe> {
     return this.httpClient.post<Recipe>(`${BASE_PATH}/recipes`, formValue);
   }
+
+  // Getting the tag array logic from the server
+  // Using switchMap...
+
+  getTag$: (term: string) => Observable<Tag[]> = (term) => {
+    return this.httpClient.get<Tag[]>(`${BASE_PATH}/tags`, {
+      params: {
+        criteria: term,
+      },
+    });
+  };
 }

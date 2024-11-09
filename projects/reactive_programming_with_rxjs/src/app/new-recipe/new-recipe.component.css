@@ -54,6 +54,7 @@ textarea:focus {
   flex-wrap: wrap;
   justify-content: space-between;
   margin-top: 10px;
+  position: relative;
 }
 
 .tag-option label {
@@ -131,6 +132,29 @@ button:hover:not([disabled]) {
   border-radius: 100px;
   border: 1px solid #555;
   margin: 0;
+}
+
+.tag-options--dropdown {
+  width: 100%;
+  background: #eee;
+  position: absolute;
+  top: 50px;
+  border-radius: 4px;
+  z-index: 10000;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
+  &.d-none {
+    display: none;
+  }
+}
+
+.tag-options--dropdown > p {
+  padding: 10px;
+  transition: all 0.4s ease-in;
+  &:hover {
+    background-color: #ddd;
+    cursor: pointer;
+  }
 }
 
 /* Responsive styling */
