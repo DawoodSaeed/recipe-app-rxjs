@@ -1,0 +1,57 @@
+<div class="sidebar" [formGroup]="filterForm" (ngSubmit)="filterResults()">
+  <form class="filter-form">
+    <div class="form-group">
+      <label for="keywords">Keywords:</label>
+      <input
+        type="text"
+        id="keywords"
+        aria-label="Keywords to search for recipe"
+        formControlName="title"
+      />
+    </div>
+    <div class="form-group">
+      <label for="category">Category:</label>
+      <input
+        type="text"
+        id="category"
+        aria-label="Category"
+        formControlName="category"
+      />
+    </div>
+    <div class="form-group">
+      <label for="ingredients">Ingredients:</label>
+      <input
+        type="text"
+        id="ingredients"
+        aria-label="Ingredients"
+        formControlName="ingredients"
+      />
+    </div>
+    <div class="form-group">
+      <label for="tags">Tags:</label>
+      <input type="text" id="tags" aria-label="Tags" formControlName="tags" />
+    </div>
+    <div class="form-group">
+      <label for="prep-time">Preparation Time:</label>
+      <input
+        type="text"
+        id="prep-time"
+        aria-label="Preparation Time"
+        formControlName="prepTime"
+      />
+    </div>
+    <div class="form-group">
+      <label for="cook-time">Cooking Time:</label>
+      <input
+        type="text"
+        id="cook-time"
+        aria-label="Cooking Time"
+        formControlName="cookingTime"
+      />
+    </div>
+    <div class="btn-group">
+      <button type="submit">Search</button>
+      <button type="reset">clear</button>
+    </div>
+  </form>
+</div>

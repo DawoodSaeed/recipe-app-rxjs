@@ -1,0 +1,13 @@
+import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import { RecipesListComponent } from './recipes-list/recipes-list.component';
+import { CoreModule } from './core/core.module';
+import { NavbarComponent } from './navbar/navbar.component';
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [RouterOutlet, RecipesListComponent, CoreModule, NavbarComponent],
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.css',
+})
+export class AppComponent {}

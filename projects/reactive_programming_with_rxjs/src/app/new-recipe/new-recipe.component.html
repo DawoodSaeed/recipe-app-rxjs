@@ -1,0 +1,113 @@
+<div class="container">
+  <h2>New Recipe</h2>
+
+  <ng-container *ngIf="valueChanges$ | async"></ng-container>
+  <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label>Title</label>
+      <input
+        formControlName="title"
+        type="text"
+        placeholder="Enter recipe title"
+      />
+    </div>
+
+    <div class="form-group" formArrayName="ingredients">
+      <label>Ingredients</label>
+      <div class="ingredients-input">
+        <div
+          *ngFor="let ingredient of ingredients.controls; let i = index"
+          class="ingredient-group"
+        >
+          <input
+            [formControlName]="i"
+            type="text"
+            placeholder="Add an ingredient"
+          />
+          <button
+            *ngIf="i > 0"
+            type="button"
+            class="remove-ingredient"
+            (click)="removeIngredient(i)"
+          >
+            X
+          </button>
+        </div>
+        <button type="button" class="add-ingredient" (click)="addIngredient()">
+          + Add ingredient
+        </button>
+      </div>
+    </div>
+
+    <div class="form-group tags">
+      <label>Tags</label>
+      <div class="tag-options">
+        <div *ngFor="let tag of tags" class="tag-option">
+          <input
+            type="radio"
+            [value]="tag.name"
+            formControlName="tags"
+            id="{{ tag.key }}"
+            hidden
+          />
+          <label for="{{ tag.key }}"></label>
+          <label for="{{ tag.key }}">{{ tag.name }}</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Image URL</label>
+      <input
+        formControlName="imageUrl"
+        type="text"
+        placeholder="Enter image URL"
+      />
+    </div>
+
+    <div class="form-group">
+      <label>Cooking Time (minutes)</label>
+      <input
+        formControlName="cookingTime"
+        type="number"
+        placeholder="e.g., 30"
+      />
+    </div>
+
+    <div class="form-group">
+      <label>Yield</label>
+      <input formControlName="yield" type="text" placeholder="e.g., Serves 4" />
+    </div>
+
+    <div class="form-group">
+      <label>Preparation Time (minutes)</label>
+      <input formControlName="prepTime" type="number" placeholder="e.g., 15" />
+    </div>
+
+    <div class="form-group" formArrayName="steps">
+      <label>Steps</label>
+      <div
+        *ngFor="let step of steps.controls; let i = index"
+        class="step-group"
+      >
+        <input [formControlName]="i" type="text" placeholder="Add a step" />
+        <button
+          *ngIf="i > 0"
+          type="button"
+          class="remove-step"
+          (click)="removeStep(i)"
+        >
+          X
+        </button>
+      </div>
+      <button type="button" class="add-step" (click)="addStep()">
+        + Add step
+      </button>
+    </div>
+
+    <div class="actions">
+      <button type="submit" [disabled]="recipeForm.invalid">Save Recipe</button>
+      <button type="button" (click)="onCancel()">Cancel</button>
+    </div>
+  </form>
+</div>

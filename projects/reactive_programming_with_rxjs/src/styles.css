@@ -1,0 +1,9 @@
+/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap");
+@import "primeicons/primeicons.css";
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: QuickSand, sans-serif;
+}

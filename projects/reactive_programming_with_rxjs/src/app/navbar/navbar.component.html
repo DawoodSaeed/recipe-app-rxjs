@@ -1,0 +1,31 @@
+<nav class="navbar">
+  <div class="navbar-logo">
+    <a routerLink="/" ariaCurrentWhenActive="page">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        width="24"
+        height="24"
+      >
+        <path
+          d="M19 2H8c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 18H8V4h11v16zM5 6H4v12h1V6zm-2 0H2v12h1V6z"
+          fill="white"
+        />
+      </svg>
+    </a>
+  </div>
+
+  <button class="hamburger" (click)="toggleNavbar()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <ul class="navbar-nav navbar-links" [ngClass]="{ show: isNavbarOpen }">
+    <li class="nav-item"><a href="#">My Recipes</a></li>
+    <li class="nav-item"><a href="#">My Favorites</a></li>
+    <li class="nav-item">
+      <a ariaCurrentWhenActive="page" routerLink="/new-recipe">New Recipe</a>
+    </li>
+  </ul>
+</nav>

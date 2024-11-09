@@ -1,0 +1,45 @@
+<!-- 
+ 1. this is declarative approach... seperated component logic from data flow
+ 2. We just tells what to do rather than how to do it.
+ 3. Cleaner code, easier to understand and maintain.
+
+-->
+
+<div class="recipe-container">
+  <app-recipesfilter />
+
+  <div class="cards-container">
+    @for (recipe of filteredRecipes$ | async; track recipe.id) {
+    <div class="card">
+      <img
+        [src]="'assets/recipes/' + recipe.imageUrl"
+        alt="{{ recipe.title }}"
+        class="card-img"
+      />
+      <div class="card-content">
+        <h2 class="card-title">{{ recipe.title }}</h2>
+        <div class="rating">
+          @for (x of [1,2,3,4,5]; track x){
+          <i
+            class="pi"
+            [ngClass]="{
+              'pi-star-fill': x <= (recipe?.rating ?? 0),
+              'pi-star': x > (recipe?.rating ?? 0) || !(recipe?.rating ?? 0)
+            }"
+            [ngStyle]="{
+              color: x <= (recipe?.rating ?? 0) ? '#FFD700' : 'gray',
+              marginRight: '5px'
+            }"
+          >
+          </i>
+          }
+        </div>
+      </div>
+    </div>
+    } @empty {
+    <div class="empty_container">
+      <p>There are no recipes.</p>
+    </div>
+    }
+  </div>
+</div>
