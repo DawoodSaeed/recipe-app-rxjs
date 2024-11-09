@@ -20,6 +20,7 @@ import {
   distinctUntilChanged,
   Observable,
   of,
+  switchMap,
   tap,
 } from 'rxjs';
 
@@ -51,9 +52,9 @@ export class NewRecipeComponent {
   });
 
   valueChanges$ = this.recipeForm.valueChanges.pipe(
-    debounceTime(500),
-    distinctUntilChanged(),
-    concatMap((formValue) => this.service.saveRecipe(<Recipe>formValue)),
+    // debounceTime(500),
+    // distinctUntilChanged(),
+    switchMap((formValue) => this.service.saveRecipe(<Recipe>formValue)),
     catchError((errors) => of(errors)),
     tap((result) => this.saveSuccess(result))
   );
