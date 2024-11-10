@@ -127,7 +127,14 @@
     </div>
 
     <div class="actions">
-      <button type="submit" [disabled]="recipeForm.invalid">Save Recipe</button>
+      <ng-container *ngIf="saveClick$ | async"></ng-container>
+      <button
+        type="submit"
+        [disabled]="recipeForm.invalid"
+        (click)="saveRecipe()"
+      >
+        Save Recipe
+      </button>
       <button type="button" (click)="onCancel()">Cancel</button>
     </div>
   </form>

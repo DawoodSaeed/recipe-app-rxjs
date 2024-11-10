@@ -3,9 +3,10 @@ import { RecipesService } from '../core/services/recipes.service';
 import { DataViewModule } from 'primeng/dataview';
 import { CommonModule } from '@angular/common';
 import { RecipesfilterComponent } from '../recipesfilter/recipesfilter.component';
-import { NavbarComponent } from '../navbar/navbar.component';
 import { combineLatest, map } from 'rxjs';
 import { Recipe } from '../core/model/recipe.model';
+import { SharedDataService } from '../core/services/shared-data.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-recipes-list',
   standalone: true,
@@ -35,7 +36,12 @@ export class RecipesListComponent implements OnInit {
       );
     })
   );
-  constructor(private service: RecipesService) {
+
+  constructor(
+    private service: RecipesService,
+    private shareData: SharedDataService,
+    private router: Router
+  ) {
     // this.service
     //   .getRecipes()
     //   .pipe(takeUntilDestroyed())
@@ -51,4 +57,9 @@ export class RecipesListComponent implements OnInit {
   //   this.destory$.next();
   //   this.destory$.complete();
   // }
+
+  editRecipe(recipe: Recipe) {
+    this.shareData.updateSelectedRecipe(recipe);
+    this.router.navigate(['/recipe-details']);
+  }
 }

@@ -1,0 +1,128 @@
+.recipe-details-container {
+  margin: 20px auto;
+  padding: 30px;
+  max-width: 800px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+}
+
+.recipe-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+}
+
+.recipe-header h1 {
+  font-size: 2rem;
+  color: #333;
+  font-weight: bold;
+  margin: 0;
+}
+
+.recipe-rating {
+  display: flex;
+  align-items: center;
+}
+
+.recipe-rating .pi {
+  font-size: 1.2rem;
+  margin-right: 5px;
+}
+
+.recipe-image {
+  height: 300px;
+  margin: 20px 0;
+}
+
+.recipe-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.recipe-info p {
+  font-size: 0.95rem;
+  margin: 8px 0;
+  color: #666;
+}
+
+.recipe-info p strong {
+  color: #444;
+  font-weight: 600;
+}
+
+.recipe-ingredients,
+.recipe-steps,
+.recipe-tags {
+  margin-top: 20px;
+}
+
+.recipe-ingredients h2,
+.recipe-steps h2,
+.recipe-tags h2 {
+  font-size: 1.4rem;
+  color: #444;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.recipe-ingredients ul,
+.recipe-steps ol {
+  list-style-type: none;
+  padding: 0;
+}
+
+.recipe-ingredients li,
+.recipe-steps li {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 8px;
+  padding-left: 10px;
+  position: relative;
+}
+
+.recipe-ingredients li::before,
+.recipe-steps li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #ff6b6b;
+  font-size: 1.2rem;
+}
+
+.recipe-tags p {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.recipe-tags p span {
+  background-color: #ff6b6b;
+  color: white;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  margin-top: 5px;
+}
+
+.empty_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 200px);
+
+  & > p {
+    font-size: 1.2rem;
+    color: #e91e63;
+    border-radius: 12px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    padding: 20px 30px;
+  }
+}

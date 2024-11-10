@@ -1,0 +1,58 @@
+@if (recipe$ | async; as recipe){
+<div class="recipe-details-container">
+  <div class="recipe-header">
+    <h1>{{ recipe.title }}</h1>
+    <div class="recipe-rating">
+      <span>
+        @for (x of [1,2,3,4,5]; track x){
+        <i
+          class="pi"
+          [ngClass]="{
+            'pi-star-fill': x <= (recipe?.rating ?? 0),
+            'pi-star': x > (recipe?.rating ?? 0) || !(recipe?.rating ?? 0)
+          }"
+          [ngStyle]="{
+            color: x <= (recipe?.rating ?? 0) ? '#FFD700' : 'gray',
+            marginRight: '5px'
+          }"
+        >
+        </i>
+        }
+      </span>
+    </div>
+  </div>
+  <div class="recipe-image">
+    <img
+      [src]="'assets/recipes/' + recipe.imageUrl"
+      alt="{{ recipe.title }}"
+      class="card-img"
+    />
+  </div>
+  <div class="recipe-info">
+    <p><strong>Category:</strong> {{ recipe.category }}</p>
+    <p><strong>Cooking Time:</strong> {{ recipe.cookingTime }} mins</p>
+    <p><strong>Prep Time:</strong> {{ recipe.prepTime }} mins</p>
+    <p><strong>Yield:</strong> {{ recipe.yield }} servings</p>
+  </div>
+  <div class="recipe-ingredients">
+    <h2>Ingredients</h2>
+    <ul>
+      <li *ngFor="let ingredient of recipe.ingredients">{{ ingredient }}</li>
+    </ul>
+  </div>
+  <div class="recipe-steps">
+    <h2>Steps</h2>
+    <ol>
+      <li *ngFor="let step of recipe.steps">{{ step }}</li>
+    </ol>
+  </div>
+  <div class="recipe-tags">
+    <h2>Tags</h2>
+    <p>{{ recipe.tags }}</p>
+  </div>
+</div>
+}@else {
+<div class="empty_container">
+  <p>There is no recipe selected.</p>
+</div>
+}

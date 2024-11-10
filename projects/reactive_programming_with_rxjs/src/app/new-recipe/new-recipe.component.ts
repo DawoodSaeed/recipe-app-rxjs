@@ -19,8 +19,10 @@ import {
   debounce,
   debounceTime,
   distinctUntilChanged,
+  exhaustMap,
   Observable,
   of,
+  Subject,
   switchMap,
   tap,
 } from 'rxjs';
@@ -119,6 +121,12 @@ export class NewRecipeComponent {
     this.dropdown = false;
   }
 
-  // Getting the tag array logic from the server
-  // Using switchMap...
+  saveClick = new Subject<Boolean>();
+  saveClick$ = this.saveClick.pipe(
+    exhaustMap(() => this.service.saveRecipe(<Recipe>this.recipeForm.value))
+  );
+
+  saveRecipe() {
+    this.saveClick.next(true);
+  }
 }
