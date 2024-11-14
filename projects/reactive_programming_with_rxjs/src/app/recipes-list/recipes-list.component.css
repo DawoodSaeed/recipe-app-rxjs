@@ -110,3 +110,38 @@
     font-weight: 500;
   }
 }
+
+.image-skeleton {
+  width: 150px;
+  height: 150px;
+  position: relative;
+  overflow: hidden;
+  background-color: #e0e0e0;
+  border-radius: 10px;
+}
+
+.image-skeleton-shimmer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(224, 224, 224, 0.1) 25%,
+    rgba(224, 224, 224, 0.3) 50%,
+    rgba(224, 224, 224, 0.1) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 10px;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}

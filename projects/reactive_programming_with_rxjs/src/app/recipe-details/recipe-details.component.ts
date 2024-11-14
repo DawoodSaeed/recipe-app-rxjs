@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { SharedDataService } from '../core/services/shared-data.service';
 
 @Component({
   selector: 'app-recipe-details',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, NgOptimizedImage],
   templateUrl: './recipe-details.component.html',
   styleUrl: './recipe-details.component.css',
 })

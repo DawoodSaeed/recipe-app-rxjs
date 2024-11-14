@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { RecipesService } from '../core/services/recipes.service';
 import { DataViewModule } from 'primeng/dataview';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { RecipesfilterComponent } from '../recipesfilter/recipesfilter.component';
 import { combineLatest, map } from 'rxjs';
 import { Recipe } from '../core/model/recipe.model';
@@ -10,7 +10,12 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-recipes-list',
   standalone: true,
-  imports: [DataViewModule, CommonModule, RecipesfilterComponent],
+  imports: [
+    DataViewModule,
+    CommonModule,
+    RecipesfilterComponent,
+    NgOptimizedImage,
+  ],
   templateUrl: './recipes-list.component.html',
   styleUrl: './recipes-list.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

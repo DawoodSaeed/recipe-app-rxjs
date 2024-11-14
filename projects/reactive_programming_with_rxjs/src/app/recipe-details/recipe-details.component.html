@@ -22,11 +22,21 @@
     </div>
   </div>
   <div class="recipe-image">
+    @defer (on idle) {
     <img
-      [src]="'assets/recipes/' + recipe.imageUrl"
+      [ngSrc]="'assets/recipes/' + recipe.imageUrl"
       alt="{{ recipe.title }}"
       class="card-img"
+      width="400"
+      height="200"
+      sizes="(max-width: 768px) 100vw, 50vw"
+      loading="lazy"
     />
+    }@placeholder {
+    <div class="image-skeleton">
+      <div class="image-skeleton-shimmer"></div>
+    </div>
+    }
   </div>
   <div class="recipe-info">
     <p><strong>Category:</strong> {{ recipe.category }}</p>

@@ -11,11 +11,19 @@
   <div class="cards-container">
     @for (recipe of filteredRecipes$ | async; track recipe.id) {
     <div class="card" (click)="editRecipe(recipe)">
+      @defer (on timer(500ms)){
       <img
-        [src]="'assets/recipes/' + recipe.imageUrl"
+        [ngSrc]="'assets/recipes/' + recipe.imageUrl"
         alt="{{ recipe.title }}"
         class="card-img"
+        width="150"
+        height="150"
       />
+      }@placeholder {
+      <div class="image-skeleton">
+        <div class="image-skeleton-shimmer"></div>
+      </div>
+      }
       <div class="card-content">
         <h2 class="card-title">{{ recipe.title }}</h2>
         <div class="rating">
